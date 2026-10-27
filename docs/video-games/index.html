@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>eBay Video Game Fee Calculator 2026: Games, Consoles and Accessories</title>
+<meta name="description" content="See eBay fees on video games, consoles and controllers in 2026. Calculate the final value fee, per-order fee, shipping, net payout and the max you should pay to flip it at 30% ROI.">
+<link rel="canonical" href="https://treborx4.github.io/flipmargin/video-games/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="eBay Video Game Fee Calculator 2026: Games, Consoles and Accessories">
+<meta property="og:description" content="See eBay fees on video games, consoles and controllers in 2026. Calculate the final value fee, per-order fee, shipping, net payout and the max you should pay to flip it at 30% ROI.">
+<meta property="og:url" content="https://treborx4.github.io/flipmargin/video-games/">
+<meta property="og:image" content="https://treborx4.github.io/flipmargin/assets/icon128.png">
+<meta name="theme-color" content="#059669">
+<link rel="icon" href="../assets/icon48.png">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"eBay Video Game Fee Calculator","url":"https://treborx4.github.io/flipmargin/video-games/","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="../"><img src="../assets/icon48.png" alt="" width="28" height="28">FlipMargin</a>
+    <nav aria-label="Categories"><a href="../">All categories</a><a href="../trading-cards/">Trading Cards</a><a href="../video-games/" aria-current="page">Video Games</a><a href="../electronics/">Electronics</a><a href="../clothing/">Clothing</a></nav>
+    <a class="cta cta-sm" href="https://chromewebstore.google.com/detail/pjgcdahejcbcnbinjghpffmbmojnihko">Add FlipMargin to Chrome <span class="long">(Free)</span></a>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>eBay Video Game Fee Calculator</h1>
+    <p>Pricing a stack of retro games from a lot, or a console you want to flip? Plug in the sold price and shipping to see what you actually keep.</p>
+    <a class="cta" href="https://chromewebstore.google.com/detail/pjgcdahejcbcnbinjghpffmbmojnihko"><img src="../assets/icon48.png" alt="" width="20" height="20">Add FlipMargin to Chrome (Free)</a>
+  </section>
+
+  <form id="calc" class="calc" autocomplete="off">
+    <div class="inputs">
+      <div class="grid2">
+        <div class="field">
+          <label for="price">Sold price</label>
+          <div class="money"><input id="price" type="number" inputmode="decimal" min="0" step="0.01" value="39.99"></div>
+        </div>
+        <div class="field">
+          <label for="ship-charged">Shipping charged</label>
+          <div class="money"><input id="ship-charged" type="number" inputmode="decimal" min="0" step="0.01" value="0"></div>
+          <small>What the buyer pays. 0 for free shipping.</small>
+        </div>
+        <div class="field">
+          <label for="ship-cost">Your label cost</label>
+          <div class="money"><input id="ship-cost" type="number" inputmode="decimal" min="0" step="0.01" value="4.80"></div>
+        </div>
+        <div class="field">
+          <label for="roi">Target ROI</label>
+          <div class="pct"><input id="roi" type="number" inputmode="decimal" min="0" step="1" value="30"></div>
+        </div>
+        <div class="field span2">
+          <label for="rate">eBay fee rate</label>
+          <select id="rate"><option value="13.6">Standard 13.6% (most categories)</option><option value="12.7">Basic Store 12.7%</option><option value="custom">Custom %</option></select>
+        </div>
+        <div class="field span2" id="custom-wrap" hidden>
+          <label for="custom-rate">Custom fee rate</label>
+          <div class="pct"><input id="custom-rate" type="number" inputmode="decimal" min="0" max="100" step="0.01" value="13.6"></div>
+        </div>
+      </div>
+      <details class="extra">
+        <summary>More options: item cost, sales tax, promoted listings</summary>
+        <div class="grid2">
+          <div class="field">
+            <label for="item-cost">What you paid</label>
+            <div class="money"><input id="item-cost" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div>
+            <small>Shows your profit and ROI.</small>
+          </div>
+          <div class="field">
+            <label for="tax">Buyer sales tax</label>
+            <div class="pct"><input id="tax" type="number" inputmode="decimal" min="0" max="20" step="0.01" placeholder="0"></div>
+            <small>eBay charges its % on tax too.</small>
+          </div>
+          <div class="field">
+            <label for="ad">Promoted listing rate</label>
+            <div class="pct"><input id="ad" type="number" inputmode="decimal" min="0" max="100" step="0.1" placeholder="0"></div>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="results" aria-live="polite">
+      <div class="big">
+        <div class="label">Max buy price</div>
+        <div class="value" id="max-buy">$0.00</div>
+        <div class="sub" id="max-buy-sub"></div>
+      </div>
+      <table class="lines">
+        <tr><td>Buyer pays (item + shipping)</td><td id="r-gross"></td></tr>
+        <tr><td id="r-fvf-label">Final value fee</td><td id="r-fvf"></td></tr>
+        <tr><td>Per-order fee</td><td id="r-order"></td></tr>
+        <tr id="r-ad-row" hidden><td>Promoted listing fee</td><td id="r-ad"></td></tr>
+        <tr><td>Shipping label</td><td id="r-ship"></td></tr>
+        <tr class="total"><td>You keep<br><small id="r-fees-pct"></small></td><td id="r-after"></td></tr>
+        <tr id="r-profit-row" class="total" hidden><td>Profit<br><small id="r-roi"></small></td><td><span id="r-profit"></span></td></tr>
+      </table>
+    </div>
+  </form>
+
+  <section class="band">
+    <p><strong>Want this on every eBay listing?</strong>FlipMargin is a free Chrome extension that puts your net payout, fees and max buy price right under each price while you browse eBay, and exports search results to a CSV for comps.</p>
+    <a class="cta" href="https://chromewebstore.google.com/detail/pjgcdahejcbcnbinjghpffmbmojnihko"><img src="../assets/icon48.png" alt="" width="20" height="20">Add FlipMargin to Chrome (Free)</a>
+  </section>
+
+  <article class="content">
+<h2>Video game fees on eBay</h2>
+<p>Most video games, accessories and consoles use the standard 13.6% rate plus the per-order fee. A few subcategories have had their own rates over the years, so if your listing shows something different on eBay's fee page, pick Custom and type it in.</p>
+
+<h2>Shipping games without losing money</h2>
+<p>A single disc game in a case usually ships well under a pound, and Ground Advantage is the normal pick. Consoles are heavier and often land in a different price range for labels, so weigh it before you list. If you offer free shipping, raise the price to cover it and put the label cost in the calculator so the payout is right.</p>
+
+<h2>Flipping game lots</h2>
+<ul>
+<li>Price the good titles one by one, then decide what the lot is worth to you with the max buy number.</li>
+<li>Cartridge only games sell for less than complete in box ones, so look at sold listings for the same condition.</li>
+<li>Test consoles before you list. Returns on "untested" consoles get expensive fast.</li>
+</ul>
+    <h2>Other calculators</h2>
+    <ul class="cats"><li><a href="../">eBay Fee Calculator (2026)</a></li><li><a href="../trading-cards/">eBay Trading Card Fee Calculator</a></li><li><a href="../electronics/">eBay Electronics Fee Calculator</a></li><li><a href="../clothing/">eBay Clothing Fee Calculator</a></li></ul>
+    <p>Fee rates change. Before you rely on a number, double check the current rates on <a href="https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4822" rel="nofollow">eBay's selling fees page</a>.</p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Made by Treborx Software. Not affiliated with or endorsed by eBay. Estimates only.</p>
+    <p><a href="https://chromewebstore.google.com/detail/pjgcdahejcbcnbinjghpffmbmojnihko">FlipMargin on the Chrome Web Store</a> &middot; <a href="https://github.com/treborx4/flipmargin">Source on GitHub</a> &middot; <a href="https://github.com/treborx4/flipmargin/blob/main/PRIVACY.md">Privacy</a></p>
+  </div>
+</footer>
+<script src="../assets/calc.js"></script>
+</body>
+</html>
